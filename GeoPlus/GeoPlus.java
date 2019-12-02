@@ -1,4 +1,3 @@
-
 // Import Necessary Packages
 import java.util.Map;
 import java.util.Scanner;
@@ -9,7 +8,7 @@ import java.util.Arrays;
  * This command-based program calculates the perimiter and area of a shape made
  * by the user.
  * 
- * @version 1.0.0
+ * @version 2.0.0
  * @author Dragos Bajanica <bajanica.dragos@gmail.com>
  */
 class Main {
@@ -236,52 +235,8 @@ class Main {
      * 
      * @since 1.0.0
      */
-    public static class TriangleRectangle extends Shape {
-        // Lines Variables
-        double AB;
-        double BC;
-        double AC;
-
-        /**
-         * This method calculates the length of each side of the triangle.
-         * 
-         * @return It gives all the lengths of all the sides of the triangle.
-         * @since 1.0.0
-         */
-        @Override
-        public void DistanceLines() {
-            AB = (Math.sqrt(Math.pow(point[1].getPointX() - point[0].getPointX(), 2)
-                    + Math.pow(point[1].getPointY() - point[0].getPointY(), 2)));
-            BC = (Math.sqrt(Math.pow(point[2].getPointX() - point[1].getPointX(), 2)
-                    + Math.pow(point[2].getPointY() - point[1].getPointY(), 2)));
-            AC = (Math.sqrt(Math.pow(point[0].getPointX() - point[2].getPointX(), 2)
-                    + Math.pow(point[0].getPointY() - point[2].getPointY(), 2)));
-        }
-
-        /**
-         * Method that calculates the perimiter of the triangle.
-         * 
-         * @return Returns the perimiter of the user-made triangle.
-         * @since 1.0.0
-         */
-        @Override
-        public void Perimiter() {
-            super.perimiter = AB + BC + AC;
-            System.out.println("The Perimiter of the Triangle is " + super.perimiter + " units.");
-        }
-
-        /**
-         * Method that calculates the area of the user-made triangle.
-         * 
-         * @return Returns the specified triangle's area.
-         * @since 1.0.0
-         */
-        @Override
-        public void Area() {
-            super.area = Math.sqrt(perimiter / 2 * (perimiter / 2 - AB) * (perimiter / 2 - BC) * (perimiter / 2 - AC));
-            System.out.println("The Area of the Triangle is " + super.area + " units squared.");
-        }
-
+    public static class TriangleRectangle extends Triangle {
+    
         /**
          * Method that verifies the most important criterion for a right angle triangle:
          * the right angle. It does that by using Pythagores' formula.
@@ -361,42 +316,7 @@ class Main {
      * 
      * @since 1.0.0
      */
-    public static class Rectangle extends Shape {
-        // Lines variables
-        double AB;
-        double BC;
-        double CD;
-        double AD;
-
-        /**
-         * This method calculates the length of each side of the regular rectangle.
-         * 
-         * @return It gives all the lengths of all four sides of the rectangle.
-         * @since 1.0.0
-         */
-        @Override
-        public void DistanceLines() {
-            AB = (Math.sqrt(Math.pow(point[1].getPointX() - point[0].getPointX(), 2)
-                    + Math.pow(point[1].getPointY() - point[0].getPointY(), 2)));
-            BC = (Math.sqrt(Math.pow(point[2].getPointX() - point[1].getPointX(), 2)
-                    + Math.pow(point[2].getPointY() - point[1].getPointY(), 2)));
-            CD = (Math.sqrt(Math.pow(point[3].getPointX() - point[2].getPointX(), 2)
-                    + Math.pow(point[3].getPointY() - point[2].getPointY(), 2)));
-            AD = (Math.sqrt(Math.pow(point[0].getPointX() - point[3].getPointX(), 2)
-                    + Math.pow(point[0].getPointY() - point[3].getPointY(), 2)));
-        }
-
-        /**
-         * Method that calculates the perimiter of the rectangle.
-         * 
-         * @return Returns the perimiter of the user-made rectangle.
-         * @since 1.0.0
-         */
-        @Override
-        public void Perimiter() {
-            super.perimiter = AB + BC + CD + AD;
-            System.out.println("The Perimiter of the Rectangle is " + super.perimiter + " units.");
-        }
+    public static class Rectangle extends Quadrilateral {
 
         /**
          * Method that calculates the area of the user-made rectangle.
@@ -436,57 +356,8 @@ class Main {
      * 
      * @since 1.0.0
      */
-    public static class Square extends Shape {
-        // Lines variables
-        double AB;
-        double BC;
-        double CD;
-        double AD;
-
-        /**
-         * This method calculates the length of each side of the regular square. This
-         * method seperately calculates each side to then be able to validate after if
-         * the square's criterion is met.
-         * 
-         * @return It gives all the lengths of all four equal sides of the square.
-         * @since 1.0.0
-         */
-        @Override
-        public void DistanceLines() {
-            AB = (Math.sqrt(Math.pow(point[1].getPointX() - point[0].getPointX(), 2)
-                    + Math.pow(point[1].getPointY() - point[0].getPointY(), 2)));
-            BC = (Math.sqrt(Math.pow(point[2].getPointX() - point[1].getPointX(), 2)
-                    + Math.pow(point[2].getPointY() - point[1].getPointY(), 2)));
-            CD = (Math.sqrt(Math.pow(point[3].getPointX() - point[2].getPointX(), 2)
-                    + Math.pow(point[3].getPointY() - point[2].getPointY(), 2)));
-            AD = (Math.sqrt(Math.pow(point[0].getPointX() - point[3].getPointX(), 2)
-                    + Math.pow(point[0].getPointY() - point[3].getPointY(), 2)));
-        }
-
-        /**
-         * Method that calculates the perimiter of the square.
-         * 
-         * @return Returns the perimiter of the user-made square.
-         * @since 1.0.0
-         */
-        @Override
-        public void Perimiter() {
-            super.perimiter = AB + BC + CD + AD;
-            System.out.println("The Perimiter of the Square is " + super.perimiter + " units.");
-        }
-
-        /**
-         * Method that calculates the area of the user-made square.
-         * 
-         * @return Returns the specified regular square's area.
-         * @since 1.0.0
-         */
-        @Override
-        public void Area() {
-            super.area = Math.pow(AB, 2);
-            System.out.println("The Area of the Square is " + super.area + " units squared.");
-        }
-
+    public static class Square extends Rectangle {
+        
         /**
          * Method that validates the easiest and most important criterion of the
          * rectangle: that all sides are equivalent.
