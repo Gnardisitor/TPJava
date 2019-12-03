@@ -8,15 +8,15 @@ import java.util.Arrays;
  * This command-based program calculates the perimiter and area of a shape made
  * by the user.
  * 
- * @version 2.0.0
+ * @version 2.1.0
+ * New 2.0.0: Changed inheritance on some classes, removing almost 150 unecessary lines of code.
+ * New 2.1.0: Removed a few lines and made all coordinates into doubles instead of integers.
  * @author Dragos Bajanica <bajanica.dragos@gmail.com>
  */
 class Main {
 
     // Create Keyboard Scanner
     static Scanner scanner = new Scanner(System.in);
-
-    public void main() {}
 
     /**
      * This class is used for each point making up a shape. It only contains the X
@@ -26,11 +26,8 @@ class Main {
      */
     public static class Point {
         // Private Coordinates
-        private int x;
-        private int y;
-
-        public void point() {
-        }
+        private double x;
+        private double y;
 
         /**
          * This method sets the point's x integer.
@@ -39,7 +36,7 @@ class Main {
          * @return Sets the x coordinate
          * @since 1.0.0
          */
-        public void setPointX(int coordinateX) {
+        public void setPointX(double coordinateX) {
             this.x = coordinateX;
         }
 
@@ -50,7 +47,7 @@ class Main {
          * @return Sets the y coordinate.
          * @since 1.0.0
          */
-        public void setPointY(int coordinateY) {
+        public void setPointY(double coordinateY) {
             this.y = coordinateY;
         }
 
@@ -58,7 +55,7 @@ class Main {
          * @return Returns the value of the x coordinate.
          * @since 1.0.0
          */
-        public int getPointX() {
+        public double getPointX() {
             return this.x;
         }
 
@@ -66,7 +63,7 @@ class Main {
          * @return Returns the value of the y coordinate.
          * @since 1.0.0
          */
-        public int getPointY() {
+        public double getPointY() {
             return this.y;
         }
     }
@@ -151,25 +148,25 @@ class Main {
                 coordinate = scanner.next();
                 // Check for Error
                 try {
-                    point[i].setPointX(Integer.parseInt(coordinate));
+                    point[i].setPointX(Double.parseDouble(coordinate));
                 } catch (Exception e) {
-                    System.out.println("Illegal Coordinate. Cannot use Letters or Symbols for an Integer.");
+                    System.out.println("Illegal Coordinate. Cannot use Letters or Symbols for a Double.");
                     break label;
                 }
                 // Set X if no Errors
-                point[i].setPointX(Integer.parseInt(coordinate));
+                point[i].setPointX(Double.parseDouble(coordinate));
                 // Set Y Coordinate of Newly Created Point
                 System.out.print("Y Coordinate: ");
                 coordinate = scanner.next();
                 // Check for Error
                 try {
-                    point[i].setPointY(Integer.parseInt(coordinate));
+                    point[i].setPointY(Double.parseDouble(coordinate));
                 } catch (Exception e) {
-                    System.out.println("Illegal Coordinate. Cannot use Letters, Decimals or Symbols in an Integer.");
+                    System.out.println("Illegal Coordinate. Cannot use Letters or Symbols for a Double.");
                     break label;
                 }
                 // Set Y if no Errors
-                point[i].setPointY(Integer.parseInt(coordinate));
+                point[i].setPointY(Double.parseDouble(coordinate));
             }
         }
     }
@@ -195,12 +192,9 @@ class Main {
          */
         @Override
         public void DistanceLines() {
-            AB = (Math.sqrt(Math.pow(point[1].getPointX() - point[0].getPointX(), 2)
-                    + Math.pow(point[1].getPointY() - point[0].getPointY(), 2)));
-            BC = (Math.sqrt(Math.pow(point[2].getPointX() - point[1].getPointX(), 2)
-                    + Math.pow(point[2].getPointY() - point[1].getPointY(), 2)));
-            AC = (Math.sqrt(Math.pow(point[0].getPointX() - point[2].getPointX(), 2)
-                    + Math.pow(point[0].getPointY() - point[2].getPointY(), 2)));
+            AB = (Math.sqrt(Math.pow(point[1].getPointX() - point[0].getPointX(), 2) + Math.pow(point[1].getPointY() - point[0].getPointY(), 2)));
+            BC = (Math.sqrt(Math.pow(point[2].getPointX() - point[1].getPointX(), 2) + Math.pow(point[2].getPointY() - point[1].getPointY(), 2)));
+            AC = (Math.sqrt(Math.pow(point[0].getPointX() - point[2].getPointX(), 2) + Math.pow(point[0].getPointY() - point[2].getPointY(), 2)));
         }
 
         /**
@@ -286,14 +280,10 @@ class Main {
          */
         @Override
         public void DistanceLines() {
-            AB = (Math.sqrt(Math.pow(point[1].getPointX() - point[0].getPointX(), 2)
-                    + Math.pow(point[1].getPointY() - point[0].getPointY(), 2)));
-            BC = (Math.sqrt(Math.pow(point[2].getPointX() - point[1].getPointX(), 2)
-                    + Math.pow(point[2].getPointY() - point[1].getPointY(), 2)));
-            CD = (Math.sqrt(Math.pow(point[3].getPointX() - point[2].getPointX(), 2)
-                    + Math.pow(point[3].getPointY() - point[2].getPointY(), 2)));
-            AD = (Math.sqrt(Math.pow(point[0].getPointX() - point[3].getPointX(), 2)
-                    + Math.pow(point[0].getPointY() - point[3].getPointY(), 2)));
+            AB = (Math.sqrt(Math.pow(point[1].getPointX() - point[0].getPointX(), 2) + Math.pow(point[1].getPointY() - point[0].getPointY(), 2)));
+            BC = (Math.sqrt(Math.pow(point[2].getPointX() - point[1].getPointX(), 2) + Math.pow(point[2].getPointY() - point[1].getPointY(), 2)));
+            CD = (Math.sqrt(Math.pow(point[3].getPointX() - point[2].getPointX(), 2) + Math.pow(point[3].getPointY() - point[2].getPointY(), 2)));
+            AD = (Math.sqrt(Math.pow(point[0].getPointX() - point[3].getPointX(), 2) + Math.pow(point[0].getPointY() - point[3].getPointY(), 2)));
         }
 
         /**
