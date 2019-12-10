@@ -7,8 +7,9 @@ import java.util.*;
  * This command-based program calculates the perimiter and area of a shape made
  * by the user.
  * 
- * @version 3.0.0 
+ * @version 3.0.1 
  * New 3.0.0: Seperated the whole code and redid most of it.
+ * New 3.0.1: Put a \n in the Quadrilateral class.
  * @author Dragos Bajanica <bajanica.dragos@gmail.com>
  */
 class App {

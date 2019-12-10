@@ -6,8 +6,9 @@ package app;
  * and then calculate the sum of the area of the 2 triangles by using Heron's
  * formula.
  * 
- * @version 2.0.0
+ * @version 2.0.1
  * New 2.0.0: Major overhaul and seperated it from the main class.
+ * New 2.0.1: Put a \n in printAll.
  * @since 1.0.0
  * @author Dragos Bajanica <bajanica.dragos@gmail.com>
  */
@@ -70,6 +71,6 @@ class Quadrilateral extends Shape {
      */
     @Override
     public void printAll() {
-        System.out.println("\nThe perimiter of the quadrilateral is: " + super.getPerimiter() + " units. The area of the quadrilateral is: " + super.getArea() + " units squared.");
+        System.out.println("\nThe perimiter of the quadrilateral is: " + super.getPerimiter() + " units. \nThe area of the quadrilateral is: " + super.getArea() + " units squared.");
     }
 }
