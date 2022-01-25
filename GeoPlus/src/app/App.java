@@ -7,9 +7,10 @@ import java.util.*;
  * This command-based program calculates the perimiter and area of a shape made
  * by the user.
  * 
- * @version 3.0.1 
+ * @version 3.1.0 
  * New 3.0.0: Seperated the whole code and redid most of it.
  * New 3.0.1: Put a \n in the Quadrilateral class.
+ * New 3.1.0: Added the Irregular Shape to the code.
  * @author Dragos Bajanica <bajanica.dragos@gmail.com>
  */
 class App {
@@ -30,7 +31,7 @@ class App {
      * @since 1.0.0
      */
     public static void main(String[] args) throws Exception {
-        System.out.println("Welcome to GeoPlus. \nVersion: 3.0.0 \nType /help to start.");
+        System.out.println("Welcome to GeoPlus. \nVersion: 3.1.1 \nType /help to start.");
         boolean exit = false;
 
         do {
@@ -43,7 +44,19 @@ class App {
                     System.out.println("To check the possible shapes, use /shapes. \nTo exit the program, use /exit.");
                     break;
                 case "/shapes":
-                    System.out.println("The possible shapes are: \n/square \n/rectangle \n/quadrilateral \n/triangle \n/rightTriangle");
+                    System.out.println("The possible shapes are: \n/square \n/rectangle \n/quadrilateral \n/triangle \n/rightTriangle \n/irregularShape");
+                    break;
+                case "/irregularShape":
+                    System.out.print("\nAmount of sides: ");
+                    final int amountOfSides = scanner.nextInt();
+                    Shape irregularShape = new IrregularShape(amountOfSides);
+                    irregularShape.validate();
+                    if (irregularShape.getError() != true) {
+                        irregularShape.perimiter();
+                        irregularShape.area();
+                        irregularShape.printAll();
+                    }
+                    exit = true;
                     break;
                 case "/square":
                     Shape square = new Square();
